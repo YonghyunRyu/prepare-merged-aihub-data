@@ -173,6 +173,7 @@ VALIDATION_TREE = {
     }
 }
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='prepare merged aihub parallel data.')
     parser.add_argument('--data-dir')
@@ -198,7 +199,9 @@ if __name__ == "__main__":
     with open(ko_path, "w", encoding="utf-8") as f_ko, \
             open(en_path, "w", encoding="utf-8") as f_en:
         for pair in corpus:
-            f_ko.write(f'{pair["ko"]}\n')
-            f_en.write(f'{pair["en"]}\n')
+            ko = pair["ko"].strip()
+            en = pair["en"].strip()
+            f_ko.write(f'{ko}\n')
+            f_en.write(f'{en}\n')
 
     print(f"{len(corpus)} pairs saved on {ko_path} and {en_path}")
